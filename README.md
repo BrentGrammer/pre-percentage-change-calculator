@@ -2,7 +2,7 @@
 
 A small JavaScript app to calculate the original amount before a percentage rate is applied to it.
 
-Try the app on GitHub Pages
+[Try the app on GitHub Pages](https://brentgrammer.github.io/pre-percentage-change-calculator/)
 
 ## Example use
 - Calculate a after-tax/take home salary given a percentage rate from a pre-tax amount.
