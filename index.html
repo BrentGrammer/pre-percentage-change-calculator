@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1"
+    />
+    <title>Pre-percentage Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <main class="main">
+      <h1 class="section-header">Pre-percentage Calculator</h1>
+      <form id="subjects-form" class="form">
+        <label for="subjects-input"
+          >Original amount with percentage rate applied:</label
+        >
+        <input
+          id="subjects-input"
+          type="text"
+          name="after-rate-amount"
+          class="form-input"
+          placeholder="Enter a number..."
+        />
+        <label for="subjects-input">Percentage Rate (Whole number %):</label>
+        <input
+          id="subjects-input"
+          type="text"
+          name="rate"
+          class="form-input"
+          placeholder="10"
+        />
+        <button
+          id="form-submit-button"
+          type="submit"
+          class="form-submit-button"
+        >
+          Calculate
+        </button>
+      </form>
+
+      <div id="loading" class="loading">Loading&#8230;</div>
+
+      <section class="result-section">
+        <p id="result"></p>
+      </section>
+    </main>
+    <script type="module" src="js/index.js"></script>
+  </body>
+</html>
