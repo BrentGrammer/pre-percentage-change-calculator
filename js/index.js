@@ -1,12 +1,38 @@
 document.addEventListener("DOMContentLoaded", function (_) {
   const $rateInput = document.getElementById("rate-input");
   const $afterRateInput = document.getElementById("after-rate-amount-input");
+  const $result = document.getElementById("result");
+  const $resultSection = document.getElementById("result-section");
+
+  const showResultSection = () => ($resultSection.style.visibility = "visible");
+  const hideResultSection = () => ($resultSection.style.visibility = "hidden");
+
+  const clearResult = () => {
+    hideResultSection();
+    $result.innerText = "";
+  };
+
+  const calculatePrePercentAmount = (amount, rate) => {
+    const decimalRate = rate / 100;
+
+    const divisor = 1 + decimalRate;
+
+    return (amount / divisor).toFixed(2);
+  };
 
   const onSubmit = (event) => {
     event.preventDefault();
     try {
-      const rate = parseInt($rateInput.value);
-      const afterRateAmount = parseInt($afterRateInput.value);
+      clearResult();
+      let rate = $rateInput.value;
+      let afterRateAmount = $afterRateInput.value;
+
+      if (rate.includes(".") && rate.indexOf(".") === 0) {
+        rate = "0" + rate;
+      }
+
+      rate = parseInt(rate);
+      afterRateAmount = parseInt(afterRateAmount);
 
       if (
         (!rate && rate !== 0) ||
@@ -16,7 +42,10 @@ document.addEventListener("DOMContentLoaded", function (_) {
         return;
       }
 
-      console.log({ rate, afterRateAmount });
+      const result = calculatePrePercentAmount(afterRateAmount, rate);
+      $result.innerText = result;
+
+      showResultSection();
     } catch (e) {
       console.error(e);
       alert("something went wrong.");

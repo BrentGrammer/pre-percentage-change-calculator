@@ -21,6 +21,16 @@
       <form id="form" class="form">
         <fieldset class="fieldset">
           <div>
+            <label for="subjects-input">Percentage Rate (%):</label>
+            <input
+            id="rate-input"
+            type="text"
+            name="rate"
+            class="form-input"
+            placeholder="Ex: 10"
+            />
+          </div>
+          <div>
             <label for="subjects-input"
               >Original amount with percentage rate applied:</label
             >
@@ -32,16 +42,6 @@
               placeholder="Enter a number..."
             />
           </div>
-          <div>
-            <label for="subjects-input">Percentage Rate (%):</label>
-            <input
-              id="rate-input"
-              type="text"
-              name="rate"
-              class="form-input"
-              placeholder="Ex: 10"
-            />
-          </div>
         </fieldset>
         <button
           id="form-submit-button"
@@ -51,7 +51,7 @@
           Calculate
         </button>
       </form>
-      <section class="result-section">
+      <section id="result-section" class="result-section">
         <p id="result"></p>
       </section>
     </main>

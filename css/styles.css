@@ -36,3 +36,7 @@ input {
     flex-direction: column;
     gap: 0.5rem;
 }
+
+.result-section {
+    visibility: hidden;
+}
