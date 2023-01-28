@@ -25,19 +25,24 @@ document.addEventListener("DOMContentLoaded", function (_) {
     return (amount / divisor).toFixed(2);
   };
 
+  const prepareInput = (input) => {
+    if (input.includes(".")) {
+      if (input.indexOf(".") === 0) {
+        input = "0" + input;
+      }
+
+      return parseFloat(input);
+    } else {
+      return parseInt(input);
+    }
+  };
+
   const onSubmit = (event) => {
     event.preventDefault();
     try {
       clearResult();
-      let rate = $rateInput.value;
-      let afterRateAmount = $afterRateInput.value;
-
-      if (rate.includes(".") && rate.indexOf(".") === 0) {
-        rate = "0" + rate;
-      }
-
-      rate = parseInt(rate);
-      afterRateAmount = parseInt(afterRateAmount);
+      const rate = prepareInput($rateInput.value);
+      const afterRateAmount = prepareInput($afterRateInput.value);
 
       if (
         (!rate && rate !== 0) ||
