@@ -12,7 +12,13 @@ document.addEventListener("DOMContentLoaded", function (_) {
     $result.innerText = "";
   };
 
+  /** 
+   * formula is amount / 1.[percent-rate-decimal] 
+   * 
+   * Ex: 34/1.2 yields the original amount that had a 20% (0.2 in decimal) increase to result in 34.
+   */
   const calculatePrePercentAmount = (amount, rate) => {
+
     const decimalRate = rate / 100;
 
     const divisor = 1 + decimalRate;
