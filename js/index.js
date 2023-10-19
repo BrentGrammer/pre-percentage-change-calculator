@@ -33,10 +33,9 @@ document.addEventListener("DOMContentLoaded", function (_) {
 
   const calculateTakeHomeAmount = (amount, rate) => {
     const decimalRate = rate / 100;
-
-    const divisor = 1 + decimalRate;
-
-    return (amount / divisor).toFixed(2);
+    const percentAfterTax = 1 - decimalRate;
+    const result = amount * percentAfterTax;
+    return result.toFixed(2);
   };
 
   /**
@@ -45,9 +44,7 @@ document.addEventListener("DOMContentLoaded", function (_) {
    */
   const calculatePreTaxAmount = (takeHome, rate) => {
     const decimalRate = rate / 100;
-
     const divisor = 1 - decimalRate;
-
     return (takeHome / divisor).toFixed(2);
   };
 
@@ -65,6 +62,7 @@ document.addEventListener("DOMContentLoaded", function (_) {
 
   const onTakeHomeFormSubmit = (event) => {
     event.preventDefault();
+
     try {
       clearResult("take-home");
       const rate = prepareInput($takeHomeRateInput.value);
