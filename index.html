@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1"
     />
-    <title>Pre-percentage Rate Calculator</title>
+    <title>Take home salary calculator</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,11 +17,12 @@
   </head>
   <body>
     <main class="main">
-      <h1 class="section-header">Pre-percentage Rate Calculator</h1>
-      <form id="form" class="form">
+      <h1>Take Home Salary Calculator</h1>
+      <h2 class="section-header">Get Take Home Pay from Pre-Tax Salary</h2>
+      <form id="take-home-form" class="form">
         <fieldset class="fieldset">
           <div>
-            <label for="subjects-input">Percentage Rate (%):</label>
+            <label for="subjects-input">Tax Rate (%):</label>
             <input
             id="rate-input"
             type="text"
@@ -32,10 +33,10 @@
           </div>
           <div>
             <label for="subjects-input"
-              >Original amount with percentage rate applied:</label
+              >Pre-tax income:</label
             >
             <input
-              id="after-rate-amount-input"
+              id="pre-tax-income-input"
               type="text"
               name="after-rate-amount"
               class="form-input"
@@ -52,8 +53,47 @@
         </button>
       </form>
       <section id="result-section" class="result-section">
-        <p>The original amount before the rate was applied is:</p>
+        <p>Take home pay is:</p>
         <p id="result"></p>
+      </section>
+
+      <h2 class="section-header"> Get Pre-Tax Salary From Take Home</h2>
+      <form id="pre-tax-form" class="form">
+        <fieldset class="fieldset">
+          <div>
+            <label for="pre-tax-form-rate-input">Tax Rate (%):</label>
+            <input
+            id="pre-tax-form-rate-input"
+            type="text"
+            name="rate"
+            class="form-input"
+            placeholder="Ex: 10"
+            />
+          </div>
+          <div>
+            <label for="pre-tax-form-take-home-input"
+              >Take home pay:</label
+            >
+            <input
+              id="pre-tax-form-take-home-input"
+              type="text"
+              name="after-rate-amount"
+              class="form-input"
+              placeholder="Enter a number..."
+            />
+          </div>
+        </fieldset>
+        <button
+          id="pre-tax-form-submit-button"
+          type="submit"
+          class="form-submit-button"
+        >
+          Calculate
+        </button>
+      </form>
+      <section id="pre-tax-form-result-section" class="result-section">
+        <p>The pre-tax salary required for the take home amount is:</p>
+        <p id="pre-tax-form-result"></p>
       </section>
     </main>
     <script type="module" src="js/index.js"></script>

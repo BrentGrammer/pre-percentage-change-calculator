@@ -1,28 +1,54 @@
 document.addEventListener("DOMContentLoaded", function (_) {
-  const $rateInput = document.getElementById("rate-input");
-  const $afterRateInput = document.getElementById("after-rate-amount-input");
-  const $result = document.getElementById("result");
-  const $resultSection = document.getElementById("result-section");
+  const $takeHomeRateInput = document.getElementById("rate-input");
+  const $preTaxIncomeInput = document.getElementById("pre-tax-income-input");
+  const $takeHomeResult = document.getElementById("result");
+  const $takeHomeResultSection = document.getElementById("result-section");
+  const showResultSection = () =>
+    ($takeHomeResultSection.style.visibility = "visible");
+  const hideResultSection = () =>
+    ($takeHomeResultSection.style.visibility = "hidden");
 
-  const showResultSection = () => ($resultSection.style.visibility = "visible");
-  const hideResultSection = () => ($resultSection.style.visibility = "hidden");
+  const $preTaxRateInput = document.getElementById("pre-tax-form-rate-input");
+  const $takeHomePayInput = document.getElementById(
+    "pre-tax-form-take-home-input"
+  );
+  const $preTaxResult = document.getElementById("pre-tax-form-result");
+  const $preTaxResultSection = document.getElementById(
+    "pre-tax-form-result-section"
+  );
+  const showPreTaxResultSection = () =>
+    ($preTaxResultSection.style.visibility = "visible");
+  const hidePreTaxResultSection = () =>
+    ($preTaxResultSection.style.visibility = "hidden");
 
-  const clearResult = () => {
-    hideResultSection();
-    $result.innerText = "";
+  const clearResult = (forForm) => {
+    if (forForm === "pre-tax") {
+      hidePreTaxResultSection();
+      $preTaxResult.innerText = "";
+    } else {
+      hideResultSection();
+      $takeHomeResult.innerText = "";
+    }
   };
 
-  /**
-   * formula is amount / 1.[percent-rate-decimal]
-   *
-   * Ex: 34/1.2 yields the original amount that had a 20% (0.2 in decimal) increase to result in 34.
-   */
-  const calculatePrePercentAmount = (amount, rate) => {
+  const calculateTakeHomeAmount = (amount, rate) => {
     const decimalRate = rate / 100;
 
     const divisor = 1 + decimalRate;
 
     return (amount / divisor).toFixed(2);
+  };
+
+  /**
+   * formula is take home pay / 1 - [percent-rate-decimal]
+   * Ex: 34/0.80 yields the original amount that had a 20% (0.2 in decimal) increase to result in 34.
+   */
+  const calculatePreTaxAmount = (takeHome, rate) => {
+    const decimalRate = rate / 100;
+
+    const divisor = 1 - decimalRate;
+
+    return (takeHome / divisor).toFixed(2);
   };
 
   const prepareInput = (input) => {
@@ -37,23 +63,20 @@ document.addEventListener("DOMContentLoaded", function (_) {
     }
   };
 
-  const onSubmit = (event) => {
+  const onTakeHomeFormSubmit = (event) => {
     event.preventDefault();
     try {
-      clearResult();
-      const rate = prepareInput($rateInput.value);
-      const afterRateAmount = prepareInput($afterRateInput.value);
+      clearResult("take-home");
+      const rate = prepareInput($takeHomeRateInput.value);
+      const preTaxIncome = prepareInput($preTaxIncomeInput.value);
 
-      if (
-        (!rate && rate !== 0) ||
-        (!afterRateAmount && afterRateAmount !== 0)
-      ) {
+      if ((!rate && rate !== 0) || (!preTaxIncome && preTaxIncome !== 0)) {
         alert("Invalid input.  You must enter a number.");
         return;
       }
 
-      const result = calculatePrePercentAmount(afterRateAmount, rate);
-      $result.innerText = result;
+      const result = calculateTakeHomeAmount(preTaxIncome, rate);
+      $takeHomeResult.innerText = result;
 
       showResultSection();
     } catch (e) {
@@ -62,6 +85,32 @@ document.addEventListener("DOMContentLoaded", function (_) {
     }
   };
 
-  const $form = document.getElementById("form");
-  $form.addEventListener("submit", onSubmit);
+  const onPreTaxFormSubmit = (event) => {
+    event.preventDefault();
+
+    try {
+      clearResult("pre-tax");
+      const rate = prepareInput($preTaxRateInput.value);
+      const takeHomePay = prepareInput($takeHomePayInput.value);
+
+      if ((!rate && rate !== 0) || (!takeHomePay && takeHomePay !== 0)) {
+        alert("Invalid input.  You must enter a number.");
+        return;
+      }
+
+      const preTaxPay = calculatePreTaxAmount(takeHomePay, rate);
+      $preTaxResult.innerText = preTaxPay;
+
+      showPreTaxResultSection();
+    } catch (e) {
+      console.error(e);
+      alert("something went wrong.");
+    }
+  };
+
+  const $takeHomeForm = document.getElementById("take-home-form");
+  $takeHomeForm.addEventListener("submit", onTakeHomeFormSubmit);
+
+  const $preTaxForm = document.getElementById("pre-tax-form");
+  $preTaxForm.addEventListener("submit", onPreTaxFormSubmit);
 });
