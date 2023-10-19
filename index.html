@@ -1,101 +1,67 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1"
-    />
-    <title>Take home salary calculator</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <main class="main">
-      <h1>Take Home Salary Calculator</h1>
-      <h2 class="section-header">Get Take Home Pay from Pre-Tax Salary</h2>
-      <form id="take-home-form" class="form">
-        <fieldset class="fieldset">
-          <div>
-            <label for="rate-input">Tax Rate (%):</label>
-            <input
-            id="rate-input"
-            type="text"
-            name="rate"
-            class="form-input"
-            placeholder="Ex: 10"
-            />
-          </div>
-          <div>
-            <label for="pre-tax-income-input"
-              >Pre-tax income (USD):</label
-            >
-            <input
-              id="pre-tax-income-input"
-              type="text"
-              name="after-rate-amount"
-              class="form-input"
-              placeholder="Enter a number..."
-            />
-          </div>
-        </fieldset>
-        <button
-          id="form-submit-button"
-          type="submit"
-          class="form-submit-button"
-        >
-          Calculate
-        </button>
-      </form>
-      <section id="result-section" class="result-section">
-        <p>Take home pay is:</p>
-        <p id="result"></p>
-      </section>
 
-      <h2 class="section-header"> Get Pre-Tax Salary From Take Home</h2>
-      <form id="pre-tax-form" class="form">
-        <fieldset class="fieldset">
-          <div>
-            <label for="pre-tax-form-rate-input">Tax Rate (%):</label>
-            <input
-            id="pre-tax-form-rate-input"
-            type="text"
-            name="rate"
-            class="form-input"
-            placeholder="Ex: 10"
-            />
-          </div>
-          <div>
-            <label for="pre-tax-form-take-home-input"
-              >Take home pay (USD):</label
-            >
-            <input
-              id="pre-tax-form-take-home-input"
-              type="text"
-              name="after-rate-amount"
-              class="form-input"
-              placeholder="Enter a number..."
-            />
-          </div>
-        </fieldset>
-        <button
-          id="pre-tax-form-submit-button"
-          type="submit"
-          class="form-submit-button"
-        >
-          Calculate
-        </button>
-      </form>
-      <section id="pre-tax-form-result-section" class="result-section">
-        <p>The pre-tax salary required for the take home amount is:</p>
-        <p id="pre-tax-form-result"></p>
-      </section>
-    </main>
-    <script type="module" src="js/index.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Take home salary calculator</title>
+  <meta name="description" content="Calculate pre-tax and take home income. Get take home pay after tax or calculate the pre-tax salary you would need to achieve a certain take home amount.">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <main class="main">
+    <h1>Take Home Salary Calculator</h1>
+    <h2 class="section-header">Get Take Home Pay from Pre-Tax Salary</h2>
+    <form id="take-home-form" class="form">
+      <fieldset class="fieldset">
+        <div>
+          <label for="rate-input">Tax Rate (%):</label>
+          <input id="rate-input" type="text" name="rate" class="form-input" placeholder="Ex: 10" />
+        </div>
+        <div>
+          <label for="pre-tax-income-input">Pre-tax income (USD):</label>
+          <input id="pre-tax-income-input" type="text" name="after-rate-amount" class="form-input"
+            placeholder="Enter a number..." />
+        </div>
+      </fieldset>
+      <button id="form-submit-button" type="submit" class="form-submit-button">
+        Calculate
+      </button>
+    </form>
+    <section id="result-section" class="result-section">
+      <p>Take home pay is:</p>
+      <p id="result"></p>
+    </section>
+
+    <h2 class="section-header"> Get Pre-Tax Salary From Take Home</h2>
+    <form id="pre-tax-form" class="form">
+      <fieldset class="fieldset">
+        <div>
+          <label for="pre-tax-form-rate-input">Tax Rate (%):</label>
+          <input id="pre-tax-form-rate-input" type="text" name="rate" class="form-input" placeholder="Ex: 10" />
+        </div>
+        <div>
+          <label for="pre-tax-form-take-home-input">Take home pay (USD):</label>
+          <input id="pre-tax-form-take-home-input" type="text" name="after-rate-amount" class="form-input"
+            placeholder="Enter a number..." />
+        </div>
+      </fieldset>
+      <button id="pre-tax-form-submit-button" type="submit" class="form-submit-button">
+        Calculate
+      </button>
+    </form>
+    <section id="pre-tax-form-result-section" class="result-section">
+      <p>The pre-tax salary required for the take home amount is:</p>
+      <p id="pre-tax-form-result"></p>
+    </section>
+  </main>
+  <script type="module" src="js/index.js"></script>
+</body>
+
 </html>
