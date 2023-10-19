@@ -73,8 +73,8 @@ document.addEventListener("DOMContentLoaded", function (_) {
         return;
       }
 
-      const result = calculateTakeHomeAmount(preTaxIncome, rate);
-      $takeHomeResult.innerText = result;
+      const takeHomePay = calculateTakeHomeAmount(preTaxIncome, rate);
+      $takeHomeResult.innerText = `$${takeHomePay}`;
 
       showResultSection();
     } catch (e) {
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function (_) {
       }
 
       const preTaxPay = calculatePreTaxAmount(takeHomePay, rate);
-      $preTaxResult.innerText = preTaxPay;
+      $preTaxResult.innerText = `$${preTaxPay}`;
 
       showPreTaxResultSection();
     } catch (e) {
