@@ -1,4 +1,4 @@
-# Pre-percentage Calculator
+# Pre-tax Salary/Take Home pay calculator
 
 A small JavaScript app to calculate take home pay and pre-tax income based on a tax rate entered.
 
