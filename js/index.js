@@ -60,6 +60,11 @@ document.addEventListener("DOMContentLoaded", function (_) {
     }
   };
 
+  const USDollar = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
   const onTakeHomeFormSubmit = (event) => {
     event.preventDefault();
 
@@ -74,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function (_) {
       }
 
       const takeHomePay = calculateTakeHomeAmount(preTaxIncome, rate);
-      $takeHomeResult.innerText = `$${takeHomePay}`;
+      $takeHomeResult.innerText = USDollar.format(takeHomePay);
 
       showResultSection();
     } catch (e) {
@@ -97,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function (_) {
       }
 
       const preTaxPay = calculatePreTaxAmount(takeHomePay, rate);
-      $preTaxResult.innerText = `$${preTaxPay}`;
+      $preTaxResult.innerText = USDollar.format(preTaxPay);
 
       showPreTaxResultSection();
     } catch (e) {
